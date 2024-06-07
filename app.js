@@ -55,5 +55,11 @@ const updateExchangeRate = async () => {
   let rate = data[fromCurr.value.toLowerCase()][toCurr.value.toLowerCase()];
 
   let finalAmount = amtVal * rate;
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+
+  // Check if finalAmount is a number
+  if (isNaN(finalAmount)) {
+    msg.innerText = "Error: Unable to fetch exchange rate.";
+  } else {
+    msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+  }
 };
